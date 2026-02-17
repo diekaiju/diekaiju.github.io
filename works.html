@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEIKAIJU | Works</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">DEI<span
+                    class="accent">_</span>KAIJU</a></div>
+        <div class="github-link">
+            <a href="https://github.com/diekaiju/" target="_blank" class="btn secondary small">GITHUB_PROFILE</a>
+        </div>
+    </nav>
+
+    <main class="works-page">
+        <header class="works-header">
+            <h1 class="glitch" data-text="SELECTED_WORKS">SELECTED_WORKS</h1>
+            <p class="subtitle">Artifacts from the <span class="highlight">digital void</span>.</p>
+        </header>
+
+        <div class="projects-grid">
+            <div class="loading-state">
+                <p class="glitch" data-text="LOADING_ARCHIVES...">LOADING_ARCHIVES...</p>
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html" class="btn secondary">RETURN_ROOT</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Additional subtle animation for cards
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Play a tiny sound or trigger a micro-interaction
+            });
+        });
+    </script>
+</body>
+
+</html>
