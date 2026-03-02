@@ -2,34 +2,40 @@
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
-window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
+if (!isTouchDevice && cursorDot && cursorOutline) {
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
 
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-});
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+}
 
 // Add hover effect for links to expand cursor
-const links = document.querySelectorAll('a, .menu-btn, .image-container');
-links.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        cursorOutline.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-        cursorOutline.style.borderColor = 'transparent';
-    });
+if (!isTouchDevice && cursorOutline) {
+    const links = document.querySelectorAll('a, .menu-btn, .image-container');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            cursorOutline.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            cursorOutline.style.borderColor = 'transparent';
+        });
 
-    link.addEventListener('mouseleave', () => {
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-        cursorOutline.style.backgroundColor = 'transparent';
-        cursorOutline.style.borderColor = 'var(--accent-primary)';
+        link.addEventListener('mouseleave', () => {
+            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorOutline.style.backgroundColor = 'transparent';
+            cursorOutline.style.borderColor = 'var(--accent-primary)';
+        });
     });
-});
+}
 
 // Glitch Text Randomizer for Subtitle
 const subtitleText = document.querySelector('.subtitle');

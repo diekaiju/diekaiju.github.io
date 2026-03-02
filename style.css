@@ -1,8 +1,10 @@
 :root {
     --bg-color: #050505;
     --text-color: #ffffff;
-    --accent-primary: #ff003c; /* Cyberpunk Red */
-    --accent-secondary: #00f3ff; /* Neon Cyan */
+    --accent-primary: #ff003c;
+    /* Cyberpunk Red */
+    --accent-secondary: #00f3ff;
+    /* Neon Cyan */
     --font-heading: 'Orbitron', sans-serif;
     --font-sub: 'Rajdhani', sans-serif;
     --font-mono: 'Space Mono', monospace;
@@ -12,7 +14,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Custom cursor */
+    cursor: none;
+    /* Custom cursor */
 }
 
 body {
@@ -20,7 +23,7 @@ body {
     color: var(--text-color);
     font-family: var(--font-sub);
     overflow-x: hidden;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Custom Cursor */
@@ -63,7 +66,13 @@ nav {
     width: 100%;
     top: 0;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9), transparent);
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 2rem;
+    }
 }
 
 .logo {
@@ -96,6 +105,7 @@ nav {
     transform: translateX(-5px);
     background-color: var(--accent-secondary);
 }
+
 .menu-btn:hover .bar:last-child {
     transform: translateX(5px);
     background-color: var(--accent-primary);
@@ -103,12 +113,20 @@ nav {
 
 /* Hero Section */
 main {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 4rem;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 6rem 2rem 2rem;
+        /* Account for fixed nav */
+        justify-content: flex-start;
+    }
 }
 
 .hero {
@@ -122,8 +140,8 @@ main {
 /* Typography & Glitch */
 .content h1 {
     font-family: var(--font-heading);
-    font-size: 5rem;
-    line-height: 1;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
     font-weight: 900;
     position: relative;
     color: var(--text-color);
@@ -163,21 +181,55 @@ main {
 }
 
 @keyframes glitch-anim {
-    0% { clip: rect(11px, 9999px, 81px, 0); }
-    20% { clip: rect(76px, 9999px, 16px, 0); }
-    40% { clip: rect(32px, 9999px, 66px, 0); }
-    60% { clip: rect(89px, 9999px, 11px, 0); }
-    80% { clip: rect(4px, 9999px, 92px, 0); }
-    100% { clip: rect(55px, 9999px, 33px, 0); }
+    0% {
+        clip: rect(11px, 9999px, 81px, 0);
+    }
+
+    20% {
+        clip: rect(76px, 9999px, 16px, 0);
+    }
+
+    40% {
+        clip: rect(32px, 9999px, 66px, 0);
+    }
+
+    60% {
+        clip: rect(89px, 9999px, 11px, 0);
+    }
+
+    80% {
+        clip: rect(4px, 9999px, 92px, 0);
+    }
+
+    100% {
+        clip: rect(55px, 9999px, 33px, 0);
+    }
 }
 
 @keyframes glitch-anim2 {
-    0% { clip: rect(65px, 9999px, 4px, 0); }
-    20% { clip: rect(22px, 9999px, 89px, 0); }
-    40% { clip: rect(98px, 9999px, 12px, 0); }
-    60% { clip: rect(5px, 9999px, 54px, 0); }
-    80% { clip: rect(44px, 9999px, 83px, 0); }
-    100% { clip: rect(10px, 9999px, 7px, 0); }
+    0% {
+        clip: rect(65px, 9999px, 4px, 0);
+    }
+
+    20% {
+        clip: rect(22px, 9999px, 89px, 0);
+    }
+
+    40% {
+        clip: rect(98px, 9999px, 12px, 0);
+    }
+
+    60% {
+        clip: rect(5px, 9999px, 54px, 0);
+    }
+
+    80% {
+        clip: rect(44px, 9999px, 83px, 0);
+    }
+
+    100% {
+        clip: rect(10px, 9999px, 7px, 0);
+    }
 }
 
 .subtitle {
@@ -254,8 +306,11 @@ main {
 .image-container::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(255,0,60,0.2), rgba(0,243,255,0.2));
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 60, 0.2), rgba(0, 243, 255, 0.2));
     z-index: 2;
     mix-blend-mode: overlay;
 }
@@ -273,8 +328,11 @@ main {
 
 .scanlines {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
     background-size: 100% 4px;
     z-index: 3;
     pointer-events: none;
@@ -313,28 +371,58 @@ main {
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        height: auto;
+        gap: 3rem;
     }
-    
-    .content h1 {
-        font-size: 3rem;
-    }
-    
+
     .cta-container {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
-    
+
     .stats {
         position: relative;
         bottom: 0;
         left: 0;
         justify-content: center;
-        margin-top: 2rem;
+        margin-top: 3rem;
+        gap: 2rem;
     }
-    
+
     .image-container {
-        width: 300px;
-        height: 400px;
+        width: min(300px, 80vw);
+        height: min(400px, 106vw);
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-container .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .stat-item {
+        align-items: center;
+    }
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    * {
+        cursor: auto !important;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
     }
 }
 
@@ -376,7 +464,7 @@ main {
     background-color: transparent;
     width: 100%;
     /* Fixed height for uniformity */
-    height: 350px; 
+    height: 350px;
     perspective: 1000px;
 }
 
@@ -397,7 +485,8 @@ main {
     box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -449,9 +538,20 @@ main {
     bottom: 2rem;
 }
 
-.status-indicator.online { background-color: #0f0; box-shadow: 0 0 8px #0f0; }
-.status-indicator.warning { background-color: #fc0; box-shadow: 0 0 8px #fc0; }
-.status-indicator.offline { background-color: #f00; box-shadow: 0 0 8px #f00; }
+.status-indicator.online {
+    background-color: #0f0;
+    box-shadow: 0 0 8px #0f0;
+}
+
+.status-indicator.warning {
+    background-color: #fc0;
+    box-shadow: 0 0 8px #fc0;
+}
+
+.status-indicator.offline {
+    background-color: #f00;
+    box-shadow: 0 0 8px #f00;
+}
 
 .card-back p {
     font-family: var(--font-sub);
@@ -490,6 +590,7 @@ main {
     font-size: 0.8rem;
     border: 1px solid #333;
 }
+
 .github-link .btn.small:hover {
     border-color: var(--accent-secondary);
 }
@@ -497,10 +598,21 @@ main {
 /* Responsive Grid/Text adjustments for Works Page */
 @media (max-width: 600px) {
     .works-header h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 10vw, 3rem);
     }
+
     .projects-grid {
         grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+    }
+
+    .project-card {
+        height: 300px;
+        /* Slightly shorter on mobile */
+    }
+
+    .card-front h3 {
+        font-size: 1.2rem;
     }
 }
 
